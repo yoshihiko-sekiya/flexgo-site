@@ -1,0 +1,7 @@
+[build]
+  command = "pnpm generate"
+  publish = ".output/public"
+[dev]
+  command = "pnpm dev"
+[[plugins]]
+  package = "@netlify/plugin-nextjs" # ← Nuxt3 でも問題なくスキップされる
