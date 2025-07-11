@@ -1,49 +1,30 @@
+<script setup>
+const plans=[
+  {img:"https://images.unsplash.com/photo-1619785299441-39fabc3be1ac?w=1200",title:"定期便",price:"¥3,000〜 / 回",list:["毎日ルート","ドライバー固定","月額割引"]},
+  {img:"https://images.unsplash.com/photo-1516302350523-a23c1e40c4ad?w=1200",title:"スポット便",price:"¥4,000〜 / 回",list:["単発利用","即日予約","全国対応"]},
+  {img:"https://images.unsplash.com/photo-1602316608205-0849fe9e44fc?w=1200",title:"緊急チャーター",price:"¥8,000〜 / 回",list:["60分集荷","貸切輸送","24h受付"]}
+]
+</script>
+
 <template>
-  <section id="services" class="alt">
-    <h3 class="section-title">サービス内容</h3>
-    <div class="services-grid">
-      <div class="service-card">
-        <h4>🚚 軽貨物配送</h4>
-        <p>小口から中型荷物まで迅速に配送いたします。</p>
-      </div>
-      <div class="service-card">
-        <h4>⚡ 緊急配送</h4>
-        <p>24時間365日対応の緊急配送サービスです。</p>
-      </div>
-      <div class="service-card">
-        <h4>📦 定期配送</h4>
-        <p>定期的な配送ルートで効率的にお届けします。</p>
-      </div>
-    </div>
-  </section>
+<section id="services" class="alt"><h3 class="section-title">サービス</h3>
+<div class="grid">
+  <article v-for="p in plans" :key="p.title">
+    <img :src="p.img" :alt="p.title" />
+    <h4>{{p.title}}</h4>
+    <ul><li v-for="l in p.list" :key="l">{{l}}</li></ul>
+    <p class="price">{{p.price}}</p>
+  </article>
+</div>
+</section>
 </template>
 
 <style scoped>
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.service-card {
-  background: var(--light);
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,.05);
-}
-
-.service-card h4 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: var(--primary-dark);
-}
-
-.service-card p {
-  color: var(--text);
-  line-height: 1.6;
-}
+.alt{background:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;max-width:1100px;margin:0 auto}
+article{background:#fff;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.06);overflow:hidden;text-align:center}
+img{width:100%;height:180px;object-fit:cover}
+h4{font-size:1.1rem;font-weight:700;margin:14px 0 8px}
+ul{list-style:disc;padding:0 0 0 20px;text-align:left;margin:0 0 12px}
+.price{font-size:1.6rem;font-weight:900;margin:0 0 20px;color:var(--primary-dark)}
 </style>
